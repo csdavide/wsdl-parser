@@ -1,0 +1,443 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://businessmanager.dosign.session.business.dosign.dosign.doqui.it/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="DosignBusinessManager" targetNamespace="http://businessmanager.dosign.session.business.dosign.dosign.doqui.it/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://businessmanager.dosign.session.business.dosign.dosign.doqui.it/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://businessmanager.dosign.session.business.dosign.dosign.doqui.it/">
+  <xs:element name="extractDocumentFromEnvelope" type="tns:extractDocumentFromEnvelope"/>
+  <xs:element name="extractDocumentFromEnvelopeResponse" type="tns:extractDocumentFromEnvelopeResponse"/>
+  <xs:element name="getSignaturesNumber" type="tns:getSignaturesNumber"/>
+  <xs:element name="getSignaturesNumberResponse" type="tns:getSignaturesNumberResponse"/>
+  <xs:element name="testResources" type="tns:testResources"/>
+  <xs:element name="testResourcesResponse" type="tns:testResourcesResponse"/>
+  <xs:element name="verifyCertificate" type="tns:verifyCertificate"/>
+  <xs:element name="verifyCertificateResponse" type="tns:verifyCertificateResponse"/>
+  <xs:element name="verifyDocument" type="tns:verifyDocument"/>
+  <xs:element name="verifyDocumentResponse" type="tns:verifyDocumentResponse"/>
+  <xs:element name="verifyDocumentWT" type="tns:verifyDocumentWT"/>
+  <xs:element name="verifyDocumentWTResponse" type="tns:verifyDocumentWTResponse"/>
+  <xs:complexType name="verifyDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:signedBuffer"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signedBuffer">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="buffer" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="detachedBuffer" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="dosignDto">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="verifyDocumentResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:verifyReport"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyReport">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="child" type="tns:verifyReport"/>
+          <xs:element name="conformitaParametriInput" type="xs:int"/>
+          <xs:element minOccurs="0" name="data" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+          <xs:element name="errorCode" type="xs:int"/>
+          <xs:element name="formatoFirma" type="xs:int"/>
+          <xs:element name="numCertificatiFirma" type="xs:int"/>
+          <xs:element name="numCertificatiMarca" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="signature" nillable="true" type="tns:signature"/>
+          <xs:element name="tipoFirma" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="signature">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence>
+          <xs:element name="annoFirma" type="xs:long"/>
+          <xs:element minOccurs="0" name="ca" type="xs:string"/>
+          <xs:element minOccurs="0" name="cert" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="codiceFiscale" type="xs:string"/>
+          <xs:element minOccurs="0" name="dataOra" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dataOraVerifica" type="xs:string"/>
+          <xs:element minOccurs="0" name="dipartimento" type="xs:string"/>
+          <xs:element minOccurs="0" name="dnQualifier" type="xs:string"/>
+          <xs:element name="errorCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="fineValidita" type="xs:string"/>
+          <xs:element minOccurs="0" name="firmatario" type="xs:string"/>
+          <xs:element name="giornoFirma" type="xs:long"/>
+          <xs:element minOccurs="0" name="givenname" type="xs:string"/>
+          <xs:element minOccurs="0" name="inizioValidita" type="xs:string"/>
+          <xs:element name="meseFirma" type="xs:long"/>
+          <xs:element name="minutiFirma" type="xs:long"/>
+          <xs:element minOccurs="0" name="nominativoFirmatario" type="xs:string"/>
+          <xs:element name="numeroControfirme" type="xs:long"/>
+          <xs:element name="oraFirma" type="xs:long"/>
+          <xs:element minOccurs="0" name="organizzazione" type="xs:string"/>
+          <xs:element minOccurs="0" name="paese" type="xs:string"/>
+          <xs:element name="secondiFirma" type="xs:long"/>
+          <xs:element minOccurs="0" name="serialNumber" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="signature" nillable="true" type="tns:signature"/>
+          <xs:element minOccurs="0" name="surname" type="xs:string"/>
+          <xs:element name="timestamped" type="xs:boolean"/>
+          <xs:element name="tipoCertificato" type="xs:int"/>
+          <xs:element name="tipoFirma" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="verifyDocumentWT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:signedBuffer"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyDocumentWTResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:verifyReportWT"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyReportWT">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="child" type="tns:verifyReportWT"/>
+          <xs:element name="conformitaParametriInput" type="xs:int"/>
+          <xs:element minOccurs="0" name="data" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+          <xs:element name="errorCode" type="xs:int"/>
+          <xs:element name="formatoFirma" type="xs:int"/>
+          <xs:element name="numCertificatiFirma" type="xs:int"/>
+          <xs:element name="numCertificatiMarca" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="signature" nillable="true" type="tns:signatureWT"/>
+          <xs:element name="tipoFirma" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="signatureWT">
+    <xs:complexContent>
+      <xs:extension base="tns:signature">
+        <xs:sequence>
+          <xs:element name="type" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getSignaturesNumber">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:signedBuffer"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSignaturesNumberResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyCertificate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:certBuffer"/>
+      <xs:element minOccurs="0" name="arg1" type="tns:verifyParameter"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certBuffer">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="buffer" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="verifyParameter">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence>
+          <xs:element name="profileType" type="xs:int"/>
+          <xs:element minOccurs="0" name="verificationDate" type="xs:dateTime"/>
+          <xs:element name="verificationScope" type="xs:int"/>
+          <xs:element name="verificationType" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="verifyCertificateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:verifyCertificateReport"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyCertificateReport">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caCertExpirationDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="caCertRevocationDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="certificationAuthority" type="xs:string"/>
+          <xs:element minOccurs="0" name="crlDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="crlExpirationDate" type="xs:string"/>
+          <xs:element name="errorCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="errorDescription" type="xs:string"/>
+          <xs:element minOccurs="0" name="expiredCertsOnCRL" type="xs:string"/>
+          <xs:element minOccurs="0" name="holdDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="invalidSince" type="xs:string"/>
+          <xs:element minOccurs="0" name="issuerAltName" type="xs:string"/>
+          <xs:element minOccurs="0" name="keyUsage" type="xs:string"/>
+          <xs:element minOccurs="0" name="keyUsageString" type="xs:string"/>
+          <xs:element minOccurs="0" name="OCSPExpired" type="xs:string"/>
+          <xs:element minOccurs="0" name="OCSPNextUpdate" type="xs:string"/>
+          <xs:element minOccurs="0" name="OCSPProducedAt" type="xs:string"/>
+          <xs:element minOccurs="0" name="OCSPThisUpdate" type="xs:string"/>
+          <xs:element minOccurs="0" name="revocationDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="serialNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="subject" type="xs:string"/>
+          <xs:element minOccurs="0" name="validFrom" type="xs:string"/>
+          <xs:element minOccurs="0" name="validTo" type="xs:string"/>
+          <xs:element minOccurs="0" name="verificationDateTime" type="xs:string"/>
+          <xs:element minOccurs="0" name="verificationResult" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="testResources">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="testResourcesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="extractDocumentFromEnvelope">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:envelopedBuffer"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="envelopedBuffer">
+    <xs:complexContent>
+      <xs:extension base="tns:envelopeInformation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="buffer" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="envelopeInformation">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="formatoDiInput" type="xs:string"/>
+          <xs:element minOccurs="0" name="formatoDiOutput" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="extractDocumentFromEnvelopeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:document"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="document">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="buffer" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DosignException" type="tns:DosignException"/>
+  <xs:complexType name="DosignException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="verifyDocument">
+    <wsdl:part element="tns:verifyDocument" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyDocumentWT">
+    <wsdl:part element="tns:verifyDocumentWT" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignException">
+    <wsdl:part element="tns:DosignException" name="DosignException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSignaturesNumber">
+    <wsdl:part element="tns:getSignaturesNumber" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyDocumentResponse">
+    <wsdl:part element="tns:verifyDocumentResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyDocumentWTResponse">
+    <wsdl:part element="tns:verifyDocumentWTResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="extractDocumentFromEnvelopeResponse">
+    <wsdl:part element="tns:extractDocumentFromEnvelopeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="extractDocumentFromEnvelope">
+    <wsdl:part element="tns:extractDocumentFromEnvelope" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyCertificateResponse">
+    <wsdl:part element="tns:verifyCertificateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSignaturesNumberResponse">
+    <wsdl:part element="tns:getSignaturesNumberResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyCertificate">
+    <wsdl:part element="tns:verifyCertificate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testResources">
+    <wsdl:part element="tns:testResources" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testResourcesResponse">
+    <wsdl:part element="tns:testResourcesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DosignBusinessManager">
+    <wsdl:operation name="verifyDocument">
+      <wsdl:input message="tns:verifyDocument" name="verifyDocument">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyDocumentResponse" name="verifyDocumentResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyDocumentWT">
+      <wsdl:input message="tns:verifyDocumentWT" name="verifyDocumentWT">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyDocumentWTResponse" name="verifyDocumentWTResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSignaturesNumber">
+      <wsdl:input message="tns:getSignaturesNumber" name="getSignaturesNumber">
+    </wsdl:input>
+      <wsdl:output message="tns:getSignaturesNumberResponse" name="getSignaturesNumberResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyCertificate">
+      <wsdl:input message="tns:verifyCertificate" name="verifyCertificate">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyCertificateResponse" name="verifyCertificateResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testResources">
+      <wsdl:input message="tns:testResources" name="testResources">
+    </wsdl:input>
+      <wsdl:output message="tns:testResourcesResponse" name="testResourcesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="extractDocumentFromEnvelope">
+      <wsdl:input message="tns:extractDocumentFromEnvelope" name="extractDocumentFromEnvelope">
+    </wsdl:input>
+      <wsdl:output message="tns:extractDocumentFromEnvelopeResponse" name="extractDocumentFromEnvelopeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DosignBusinessManagerSoapBinding" type="tns:DosignBusinessManager">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="verifyDocumentWT">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyDocumentWT">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyDocumentWTResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyDocument">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyDocument">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyDocumentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSignaturesNumber">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSignaturesNumber">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSignaturesNumberResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyCertificate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyCertificate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyCertificateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testResources">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="testResources">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="testResourcesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="extractDocumentFromEnvelope">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="extractDocumentFromEnvelope">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="extractDocumentFromEnvelopeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DosignBusinessManager">
+    <wsdl:port binding="tns:DosignBusinessManagerSoapBinding" name="DosignBusinessManagerBeanPort">
+      <soap:address location="http://applogic.reteunitaria.piemonte.it:80/dosignmanager/DosignBusinessManager/DosignBusinessManagerBean"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

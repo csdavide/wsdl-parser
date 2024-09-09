@@ -1,0 +1,26 @@
+<html lang="en">
+	<head>
+			<meta charset="UTF-8">
+			<title>WSDL TOOL</title>
+			<link rel="stylesheet" href="/static/highlight.min.css">
+			<link rel="stylesheet" href="/static/wstool.css" />
+			<script src="/static/highlight.min.js"></script>
+			<script src="/static/wstool.js"></script>
+	</head>
+	<body>
+			<br />
+			<div class="container">
+			 <div class="form1">
+			    <div class="source">
+						<form id="source" enctype="multipart/form-data">
+						  <select id="services" name="service" onchange="changeService();"></select>
+							<select id="bindings" name="binding" onchange="changeBinding();"></select>
+							<select id="operations" name="operation" onchange="changeOperation();"></select>
+						</form>
+					</div>					
+				</div>
+				<div id="target" class="target"></div>
+			</div>
+			<script type="text/javascript"> window.onload = function(){ initTool(); } </script>
+	</body>
+</html>

@@ -1,0 +1,869 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://signaturevalidation.dosign.session.business.dosign.dosign.doqui.it/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="DosignSignatureValidation" targetNamespace="http://signaturevalidation.dosign.session.business.dosign.dosign.doqui.it/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://signaturevalidation.dosign.session.business.dosign.dosign.doqui.it/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://signaturevalidation.dosign.session.business.dosign.dosign.doqui.it/">
+  <xs:element name="pdfVerify" type="tns:pdfVerify"/>
+  <xs:element name="pdfVerifyResponse" type="tns:pdfVerifyResponse"/>
+  <xs:element name="testResources" type="tns:testResources"/>
+  <xs:element name="testResourcesResponse" type="tns:testResourcesResponse"/>
+  <xs:element name="verify" type="tns:verify"/>
+  <xs:element name="verifyCertificate" type="tns:verifyCertificate"/>
+  <xs:element name="verifyCertificateResponse" type="tns:verifyCertificateResponse"/>
+  <xs:element name="verifyDigest" type="tns:verifyDigest"/>
+  <xs:element name="verifyDigestResponse" type="tns:verifyDigestResponse"/>
+  <xs:element name="verifyInfocertTimeStampedData" type="tns:verifyInfocertTimeStampedData"/>
+  <xs:element name="verifyInfocertTimeStampedDataResponse" type="tns:verifyInfocertTimeStampedDataResponse"/>
+  <xs:element name="verifyResponse" type="tns:verifyResponse"/>
+  <xs:element name="verifyTimeStamp" type="tns:verifyTimeStamp"/>
+  <xs:element name="verifyTimeStampDigest" type="tns:verifyTimeStampDigest"/>
+  <xs:element name="verifyTimeStampDigestResponse" type="tns:verifyTimeStampDigestResponse"/>
+  <xs:element name="verifyTimeStampResponse" type="tns:verifyTimeStampResponse"/>
+  <xs:element name="verifyTimeStampedData" type="tns:verifyTimeStampedData"/>
+  <xs:element name="verifyTimeStampedDataResponse" type="tns:verifyTimeStampedDataResponse"/>
+  <xs:element name="xmlVerify" type="tns:xmlVerify"/>
+  <xs:element name="xmlVerifyResponse" type="tns:xmlVerifyResponse"/>
+  <xs:complexType name="verifyDigest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:verifyDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyDto">
+    <xs:complexContent>
+      <xs:extension base="tns:signatureParameterDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="envelopeArray" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="envelopeInputStream" type="tns:inputStream"/>
+          <xs:element name="length" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="signatureParameterDto">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDataDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+          <xs:element name="extractData" type="xs:boolean"/>
+          <xs:element name="profileType" type="xs:int"/>
+          <xs:element name="verificationScope" type="xs:int"/>
+          <xs:element name="verificationType" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="dosignDataDto">
+    <xs:complexContent>
+      <xs:extension base="tns:contentDto">
+        <xs:sequence>
+          <xs:element name="encoding" type="xs:int"/>
+          <xs:element name="hashAlgorithm" type="xs:int"/>
+          <xs:element minOccurs="0" name="signedDataMimeType" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="contentDto">
+    <xs:complexContent>
+      <xs:extension base="tns:commonDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="data" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="commonDto">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="dosignDto">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="inputStream">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="verifyDigestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:verifyReportDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyReportDto">
+    <xs:complexContent>
+      <xs:extension base="tns:errorInformationDto">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="verifyInfo" nillable="true" type="tns:verifyInfoDto"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="errorInformationDto">
+    <xs:complexContent>
+      <xs:extension base="tns:commonDto">
+        <xs:sequence>
+          <xs:element name="error" type="xs:int"/>
+          <xs:element minOccurs="0" name="errorMsg" type="xs:string"/>
+          <xs:element minOccurs="0" name="hexErrorCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="verifyInfoDto">
+    <xs:complexContent>
+      <xs:extension base="tns:errorInformationDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="data" type="xs:base64Binary"/>
+          <xs:element name="envelopeCompliance" type="xs:int"/>
+          <xs:element name="envelopeComplianceCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="envelopeComplianceInfo" type="xs:string"/>
+          <xs:element name="invalidSignCount" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="signer" nillable="true" type="tns:signerDto"/>
+          <xs:element name="signerCount" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="signerDto">
+    <xs:complexContent>
+      <xs:extension base="tns:errorInformationDto">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="archiveTimeStamps" nillable="true" type="tns:timeStampDto"/>
+          <xs:element minOccurs="0" name="certificateId" type="tns:certificateDto"/>
+          <xs:element minOccurs="0" name="certificateSn" type="xs:string"/>
+          <xs:element name="certificateStatus" type="xs:int"/>
+          <xs:element name="certificateStatusCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="certificateStatusDescription" type="xs:string"/>
+          <xs:element minOccurs="0" name="certificateStatusInfo" type="xs:string"/>
+          <xs:element minOccurs="0" name="certificateValue" type="xs:base64Binary"/>
+          <xs:element name="certificateVerificationMode" type="xs:int"/>
+          <xs:element name="certificationLevel" type="xs:int"/>
+          <xs:element name="complianceEnvironment" type="xs:int"/>
+          <xs:element minOccurs="0" name="contact" type="xs:string"/>
+          <xs:element name="corruptedData" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="crlIssueDn" type="xs:string"/>
+          <xs:element minOccurs="0" name="crlNextUpdateTime" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="crlRevocationDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="crlUpdateTime" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="crlUrl" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateOfBirth" type="xs:string"/>
+          <xs:element name="digestAlgorithm" type="xs:int"/>
+          <xs:element minOccurs="0" name="digestAlgorithmName" type="xs:string"/>
+          <xs:element minOccurs="0" name="digestValue" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="endDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="fiscalCode" type="xs:string"/>
+          <xs:element name="invalidSignCount" type="xs:int"/>
+          <xs:element minOccurs="0" name="issuerDn" type="xs:string"/>
+          <xs:element name="keyType" type="xs:int"/>
+          <xs:element name="keyUsage" type="xs:int"/>
+          <xs:element minOccurs="0" name="location" type="xs:string"/>
+          <xs:element minOccurs="0" name="md5Fingerprint" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="ocspProducedAt" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ocspUrl" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="policies" nillable="true" type="tns:certificatePolicyDto"/>
+          <xs:element minOccurs="0" name="qcCompliance" type="xs:string"/>
+          <xs:element name="qcLimitValue" type="xs:int"/>
+          <xs:element minOccurs="0" name="qcLimitValueCurrency" type="xs:string"/>
+          <xs:element name="qcRetentionPeriod" type="xs:int"/>
+          <xs:element minOccurs="0" name="qcSscd" type="xs:string"/>
+          <xs:element minOccurs="0" name="reason" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="references" nillable="true" type="tns:xmlReferenceDto"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="refsOnlyTimeStamps" nillable="true" type="tns:timeStampDto"/>
+          <xs:element name="revision" type="xs:int"/>
+          <xs:element minOccurs="0" name="shaFingerprint" type="xs:base64Binary"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="sigAndRefsTimeStamps" nillable="true" type="tns:timeStampDto"/>
+          <xs:element name="signatureAlgorithm" type="xs:int"/>
+          <xs:element minOccurs="0" name="signatureAlgorithmName" type="xs:string"/>
+          <xs:element name="signatureCompliance" type="xs:int"/>
+          <xs:element name="signatureComplianceCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="signatureComplianceInfo" type="xs:string"/>
+          <xs:element name="signatureFormat" type="xs:int"/>
+          <xs:element minOccurs="0" name="signatureProductionPlace" type="tns:xmlSignatureProductionPlaceDto"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="signatureTimeStamps" nillable="true" type="tns:timeStampDto"/>
+          <xs:element minOccurs="0" name="signatureValue" type="xs:base64Binary"/>
+          <xs:element name="signerCount" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="signers" nillable="true" type="tns:signerDto"/>
+          <xs:element minOccurs="0" name="signingTime" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="startDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="subjectDn" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="timeStamp" nillable="true" type="tns:timeStampDto"/>
+          <xs:element minOccurs="0" name="verificationDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timeStampDto">
+    <xs:complexContent>
+      <xs:extension base="tns:errorInformationDto">
+        <xs:sequence>
+          <xs:element name="compliance" type="xs:int"/>
+          <xs:element name="complianceCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="complianceInfo" type="xs:string"/>
+          <xs:element minOccurs="0" name="encodedTst" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="genTime" type="xs:dateTime"/>
+          <xs:element name="hashAlgorithm" type="xs:int"/>
+          <xs:element minOccurs="0" name="hashValue" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="policyId" type="xs:string"/>
+          <xs:element minOccurs="0" name="serialNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="signer" type="tns:signerDto"/>
+          <xs:element name="tsTokenLength" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="certificateDto">
+    <xs:complexContent>
+      <xs:extension base="tns:signatureValidationDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="issuerDn" type="xs:string"/>
+          <xs:element minOccurs="0" name="serialNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="signatureValidationDto">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="certificatePolicyDto">
+    <xs:complexContent>
+      <xs:extension base="tns:signatureValidationDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="oid" type="xs:string"/>
+          <xs:element name="policyInfoCount" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="policyInfo" nillable="true" type="tns:policyInfoDto"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="policyInfoDto">
+    <xs:complexContent>
+      <xs:extension base="tns:signatureValidationDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cpsUri" type="xs:string"/>
+          <xs:element minOccurs="0" name="explicitText" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="noticeNumbers" nillable="true" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="xmlReferenceDto">
+    <xs:complexContent>
+      <xs:extension base="tns:xmlPropertyDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dataObjectFormat" type="tns:xmlDataObjectFormatDto"/>
+          <xs:element minOccurs="0" name="id" type="xs:string"/>
+          <xs:element minOccurs="0" name="insertData" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceData" type="tns:xmlReferenceDataDto"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="transformation" nillable="true" type="tns:xmlTransformationDto"/>
+          <xs:element minOccurs="0" name="type" type="xs:string"/>
+          <xs:element minOccurs="0" name="uri" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="xmlPropertyDto">
+    <xs:complexContent>
+      <xs:extension base="tns:signatureValidationDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="xmlDataObjectFormatDto">
+    <xs:complexContent>
+      <xs:extension base="tns:xmlPropertyDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="encoding" type="xs:string"/>
+          <xs:element minOccurs="0" name="mimetype" type="xs:string"/>
+          <xs:element minOccurs="0" name="objectIdentifier" type="tns:xmlObjectIdentifierDto"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="xmlObjectIdentifierDto">
+    <xs:complexContent>
+      <xs:extension base="tns:xmlPropertyDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="documentationReferences" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="identifier" type="xs:string"/>
+          <xs:element name="qualifier" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="xmlReferenceDataDto">
+    <xs:complexContent>
+      <xs:extension base="tns:xmlPropertyDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dataBuffer" type="xs:base64Binary"/>
+          <xs:element name="dataLength" type="xs:int"/>
+          <xs:element minOccurs="0" name="encoding" type="xs:string"/>
+          <xs:element minOccurs="0" name="mimetype" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="xmlTransformationDto">
+    <xs:complexContent>
+      <xs:extension base="tns:xmlPropertyDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="algorithm" type="xs:string"/>
+          <xs:element minOccurs="0" name="data" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="expression" type="xs:string"/>
+          <xs:element minOccurs="0" name="filter" type="xs:string"/>
+          <xs:element minOccurs="0" name="verifyInfo" type="tns:verifyInfoDto"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="xmlSignatureProductionPlaceDto">
+    <xs:complexContent>
+      <xs:extension base="tns:xmlPropertyDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="city" type="xs:string"/>
+          <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+          <xs:element minOccurs="0" name="postalCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="stateOrProvince" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="verifyTimeStampedData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:verifyDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyTimeStampedDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:timeStampedDataInfoDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="timeStampedDataInfoDto">
+    <xs:complexContent>
+      <xs:extension base="tns:errorInformationDto">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="timeStamp" nillable="true" type="tns:timeStampDto"/>
+          <xs:element minOccurs="0" name="verifyReport" type="tns:verifyReportDto"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="testResources">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="testResourcesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyCertificate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:verifyDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyCertificateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:signerDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyInfocertTimeStampedData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:verifyDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyInfocertTimeStampedDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:timeStampedDataInfoDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyTimeStamp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:verifyDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyTimeStampResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:timeStampDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlVerify">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:verifyDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlVerifyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:verifyReportDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verify">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:verifyDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:verifyReportDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pdfVerify">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:verifyDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pdfVerifyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:verifyReportDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyTimeStampDigest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:verifyDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyTimeStampDigestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:timeStampDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignException" type="tns:DosignException"/>
+  <xs:complexType name="DosignException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidEnvelopeException" type="tns:DosignInvalidEnvelopeException"/>
+  <xs:complexType name="DosignInvalidEnvelopeException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidDataException" type="tns:DosignInvalidDataException"/>
+  <xs:complexType name="DosignInvalidDataException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidCertificateException" type="tns:DosignInvalidCertificateException"/>
+  <xs:complexType name="DosignInvalidCertificateException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidEncodingException" type="tns:DosignInvalidEncodingException"/>
+  <xs:complexType name="DosignInvalidEncodingException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidAlgorithmException" type="tns:DosignInvalidAlgorithmException"/>
+  <xs:complexType name="DosignInvalidAlgorithmException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="verifyDigest">
+    <wsdl:part element="tns:verifyDigest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignException">
+    <wsdl:part element="tns:DosignException" name="DosignException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidEnvelopeException">
+    <wsdl:part element="tns:DosignInvalidEnvelopeException" name="DosignInvalidEnvelopeException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyTimeStampedDataResponse">
+    <wsdl:part element="tns:verifyTimeStampedDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyInfocertTimeStampedDataResponse">
+    <wsdl:part element="tns:verifyInfocertTimeStampedDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidEncodingException">
+    <wsdl:part element="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidDataException">
+    <wsdl:part element="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testResourcesResponse">
+    <wsdl:part element="tns:testResourcesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyCertificate">
+    <wsdl:part element="tns:verifyCertificate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="xmlVerify">
+    <wsdl:part element="tns:xmlVerify" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdfVerify">
+    <wsdl:part element="tns:pdfVerify" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdfVerifyResponse">
+    <wsdl:part element="tns:pdfVerifyResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyTimeStampedData">
+    <wsdl:part element="tns:verifyTimeStampedData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidAlgorithmException">
+    <wsdl:part element="tns:DosignInvalidAlgorithmException" name="DosignInvalidAlgorithmException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyTimeStamp">
+    <wsdl:part element="tns:verifyTimeStamp" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyTimeStampDigestResponse">
+    <wsdl:part element="tns:verifyTimeStampDigestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyResponse">
+    <wsdl:part element="tns:verifyResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verify">
+    <wsdl:part element="tns:verify" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyTimeStampDigest">
+    <wsdl:part element="tns:verifyTimeStampDigest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidCertificateException">
+    <wsdl:part element="tns:DosignInvalidCertificateException" name="DosignInvalidCertificateException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testResources">
+    <wsdl:part element="tns:testResources" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyTimeStampResponse">
+    <wsdl:part element="tns:verifyTimeStampResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="xmlVerifyResponse">
+    <wsdl:part element="tns:xmlVerifyResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyInfocertTimeStampedData">
+    <wsdl:part element="tns:verifyInfocertTimeStampedData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyDigestResponse">
+    <wsdl:part element="tns:verifyDigestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyCertificateResponse">
+    <wsdl:part element="tns:verifyCertificateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DosignSignatureValidation">
+    <wsdl:operation name="verifyDigest">
+      <wsdl:input message="tns:verifyDigest" name="verifyDigest">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyDigestResponse" name="verifyDigestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEnvelopeException" name="DosignInvalidEnvelopeException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyTimeStampedData">
+      <wsdl:input message="tns:verifyTimeStampedData" name="verifyTimeStampedData">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyTimeStampedDataResponse" name="verifyTimeStampedDataResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEnvelopeException" name="DosignInvalidEnvelopeException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testResources">
+      <wsdl:input message="tns:testResources" name="testResources">
+    </wsdl:input>
+      <wsdl:output message="tns:testResourcesResponse" name="testResourcesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyCertificate">
+      <wsdl:input message="tns:verifyCertificate" name="verifyCertificate">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyCertificateResponse" name="verifyCertificateResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignInvalidCertificateException" name="DosignInvalidCertificateException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyInfocertTimeStampedData">
+      <wsdl:input message="tns:verifyInfocertTimeStampedData" name="verifyInfocertTimeStampedData">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyInfocertTimeStampedDataResponse" name="verifyInfocertTimeStampedDataResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEnvelopeException" name="DosignInvalidEnvelopeException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyTimeStamp">
+      <wsdl:input message="tns:verifyTimeStamp" name="verifyTimeStamp">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyTimeStampResponse" name="verifyTimeStampResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidAlgorithmException" name="DosignInvalidAlgorithmException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="xmlVerify">
+      <wsdl:input message="tns:xmlVerify" name="xmlVerify">
+    </wsdl:input>
+      <wsdl:output message="tns:xmlVerifyResponse" name="xmlVerifyResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verify">
+      <wsdl:input message="tns:verify" name="verify">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyResponse" name="verifyResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pdfVerify">
+      <wsdl:input message="tns:pdfVerify" name="pdfVerify">
+    </wsdl:input>
+      <wsdl:output message="tns:pdfVerifyResponse" name="pdfVerifyResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEnvelopeException" name="DosignInvalidEnvelopeException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyTimeStampDigest">
+      <wsdl:input message="tns:verifyTimeStampDigest" name="verifyTimeStampDigest">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyTimeStampDigestResponse" name="verifyTimeStampDigestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidAlgorithmException" name="DosignInvalidAlgorithmException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DosignSignatureValidationSoapBinding" type="tns:DosignSignatureValidation">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="verifyDigest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyDigest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyDigestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEnvelopeException">
+        <soap:fault name="DosignInvalidEnvelopeException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyTimeStampedData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyTimeStampedData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyTimeStampedDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEnvelopeException">
+        <soap:fault name="DosignInvalidEnvelopeException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testResources">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="testResources">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="testResourcesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyCertificate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyCertificate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyCertificateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignInvalidCertificateException">
+        <soap:fault name="DosignInvalidCertificateException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyInfocertTimeStampedData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyInfocertTimeStampedData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyInfocertTimeStampedDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEnvelopeException">
+        <soap:fault name="DosignInvalidEnvelopeException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyTimeStamp">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyTimeStamp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyTimeStampResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidAlgorithmException">
+        <soap:fault name="DosignInvalidAlgorithmException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEncodingException">
+        <soap:fault name="DosignInvalidEncodingException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="xmlVerify">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="xmlVerify">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="xmlVerifyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verify">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verify">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pdfVerify">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pdfVerify">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pdfVerifyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEnvelopeException">
+        <soap:fault name="DosignInvalidEnvelopeException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyTimeStampDigest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyTimeStampDigest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyTimeStampDigestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidAlgorithmException">
+        <soap:fault name="DosignInvalidAlgorithmException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEncodingException">
+        <soap:fault name="DosignInvalidEncodingException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DosignSignatureValidation">
+    <wsdl:port binding="tns:DosignSignatureValidationSoapBinding" name="DosignSignatureValidationBeanPort">
+      <soap:address location="http://applogic.reteunitaria.piemonte.it:80/dosignmanager/DosignSignatureValidation/DosignSignatureValidationBean"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

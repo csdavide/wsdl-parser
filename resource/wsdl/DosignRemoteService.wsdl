@@ -1,0 +1,799 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://remotev2.dosign.session.business.dosign.dosign.doqui.it/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="DosignRemoteService" targetNamespace="http://remotev2.dosign.session.business.dosign.dosign.doqui.it/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns="http://remotev2.dosign.session.business.dosign.dosign.doqui.it/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://remotev2.dosign.session.business.dosign.dosign.doqui.it/">
+  <xs:import namespace="http://www.w3.org/2005/05/xmlmime"/>
+  <xs:element name="addsign" type="tns:addsign"/>
+  <xs:element name="addsignResponse" type="tns:addsignResponse"/>
+  <xs:element name="certs" type="tns:certs"/>
+  <xs:element name="certsResponse" type="tns:certsResponse"/>
+  <xs:element name="createTimeStampedData" type="tns:createTimeStampedData"/>
+  <xs:element name="createTimeStampedDataResponse" type="tns:createTimeStampedDataResponse"/>
+  <xs:element name="digest" type="tns:digest"/>
+  <xs:element name="digestResponse" type="tns:digestResponse"/>
+  <xs:element name="endTransaction" type="tns:endTransaction"/>
+  <xs:element name="endTransactionResponse" type="tns:endTransactionResponse"/>
+  <xs:element name="pdfsign" type="tns:pdfsign"/>
+  <xs:element name="pdfsignResponse" type="tns:pdfsignResponse"/>
+  <xs:element name="providers" type="tns:providers"/>
+  <xs:element name="providersResponse" type="tns:providersResponse"/>
+  <xs:element name="pushOtp" type="tns:pushOtp"/>
+  <xs:element name="pushOtpResponse" type="tns:pushOtpResponse"/>
+  <xs:element name="sign" type="tns:sign"/>
+  <xs:element name="signResponse" type="tns:signResponse"/>
+  <xs:element name="startTransaction" type="tns:startTransaction"/>
+  <xs:element name="startTransactionResponse" type="tns:startTransactionResponse"/>
+  <xs:element name="testResources" type="tns:testResources"/>
+  <xs:element name="testResourcesResponse" type="tns:testResourcesResponse"/>
+  <xs:complexType name="addsign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:remoteSignatureDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="remoteSignatureDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteAuthDto">
+        <xs:sequence>
+          <xs:element name="data" type="xs:base64Binary" xmime:expectedContentTypes="application/octet-stream"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="documents" type="tns:documentDto" xmime:expectedContentTypes="application/octet-stream"/>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="otp" type="xs:string"/>
+          <xs:element default="PADES" name="format" type="tns:Format"/>
+          <xs:element name="timestamped" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="remoteAuthDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteTsaDto">
+        <xs:sequence>
+          <xs:element name="username" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element name="pin" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="remoteTsaDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteBaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="tsaUser" type="xs:string"/>
+          <xs:element minOccurs="0" name="tsaPwd" type="xs:string"/>
+          <xs:element minOccurs="0" name="tsaUrl" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="remoteBaseDto">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence>
+          <xs:element default="BOX" minOccurs="0" name="env" type="tns:Env"/>
+          <xs:element name="provider" type="xs:string"/>
+          <xs:element minOccurs="0" name="codiceFiscale" type="xs:string"/>
+          <xs:element minOccurs="0" name="collocazione" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="dosignDto">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="documentDto">
+    <xs:sequence>
+      <xs:element name="documentName" type="xs:string"/>
+      <xs:element name="documentContent" type="xs:base64Binary" xmime:expectedContentTypes="application/octet-stream"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addsignResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:remoteSignatureDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pushOtp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:remoteOtpDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="remoteOtpDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteAuthDto">
+        <xs:sequence>
+          <xs:element name="uses" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="pushOtpResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="testResources">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="testResourcesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="startTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:remoteStartTransactionDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="remoteStartTransactionDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteAuthDto">
+        <xs:sequence>
+          <xs:element name="otp" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="startTransactionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createTimeStampedData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:remoteTimestampDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="remoteTimestampDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteTsaDto">
+        <xs:sequence>
+          <xs:element name="data" type="xs:base64Binary" xmime:expectedContentTypes="application/octet-stream"/>
+          <xs:element default="TSR" name="format" type="tns:TsFormat"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="createTimeStampedDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:remoteTimestampDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="endTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:remoteEndTransactionDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="remoteEndTransactionDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteAuthDto">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="endTransactionResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="pdfsign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:remotePdfSignatureDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="remotePdfSignatureDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteSignatureDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="graphicDto" type="tns:remoteGraphicDto"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="remoteGraphicDto">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence>
+          <xs:element name="page" type="xs:int"/>
+          <xs:element name="leftx" type="xs:int"/>
+          <xs:element name="lefty" type="xs:int"/>
+          <xs:element name="rightx" type="xs:int"/>
+          <xs:element name="righty" type="xs:int"/>
+          <xs:element minOccurs="0" name="image" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="testo" type="xs:string"/>
+          <xs:element name="imageOnly" type="xs:boolean"/>
+          <xs:element name="showDateTime" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="labelReason" type="xs:string"/>
+          <xs:element minOccurs="0" name="reason" type="xs:string"/>
+          <xs:element minOccurs="0" name="labelDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="formatDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="labelSignedBy" type="xs:string"/>
+          <xs:element minOccurs="0" name="font" type="xs:string"/>
+          <xs:element minOccurs="0" name="fontSize" type="xs:string"/>
+          <xs:element minOccurs="0" name="fontStyle" type="xs:string"/>
+          <xs:element minOccurs="0" name="apparance" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="pdfsignResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:remoteSignatureDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="providers">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="providersResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certs">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:remoteCertsDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="remoteCertsDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteAuthDto">
+        <xs:sequence>
+          <xs:element default="PUBLICKEY" name="type" type="tns:Type"/>
+          <xs:element name="identifier" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="certsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="digest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:remoteDigestDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="remoteDigestDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteAuthDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="otp" type="xs:string"/>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element name="identifier" type="xs:string"/>
+          <xs:element default="RSARAW" name="mechanism" type="tns:Mechanism"/>
+          <xs:element name="plaintext" type="xs:string"/>
+          <xs:element name="billingUser" type="xs:string"/>
+          <xs:element name="billingPassword" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="digestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:remoteSignatureDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:remoteSignatureDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Format">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PADES"/>
+      <xs:enumeration value="CADES"/>
+      <xs:enumeration value="XADES_ENVELOPED"/>
+      <xs:enumeration value="XADES_ENVELOPING"/>
+      <xs:enumeration value="XADES_DETACHED"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Env">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BOX"/>
+      <xs:enumeration value="CLOUD"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TsFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TSR"/>
+      <xs:enumeration value="TSD"/>
+      <xs:enumeration value="PDF"/>
+      <xs:enumeration value="TST"/>
+      <xs:enumeration value="M7M"/>
+      <xs:enumeration value="P7M"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DATA"/>
+      <xs:enumeration value="KEY"/>
+      <xs:enumeration value="PRIVATEKEY"/>
+      <xs:enumeration value="PUBLICKEY"/>
+      <xs:enumeration value="CERTIFICATE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Mechanism">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RSAMD5"/>
+      <xs:enumeration value="RSASHA1"/>
+      <xs:enumeration value="RSASHA256"/>
+      <xs:enumeration value="RSASHA512"/>
+      <xs:enumeration value="RSARAW"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DosignInvalidPinException" type="tns:DosignInvalidPinException"/>
+  <xs:complexType name="DosignInvalidPinException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidOtpException" type="tns:DosignInvalidOtpException"/>
+  <xs:complexType name="DosignInvalidOtpException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignException" type="tns:DosignException"/>
+  <xs:complexType name="DosignException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidAuthenticationException" type="tns:DosignInvalidAuthenticationException"/>
+  <xs:complexType name="DosignInvalidAuthenticationException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidDataException" type="tns:DosignInvalidDataException"/>
+  <xs:complexType name="DosignInvalidDataException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidModeException" type="tns:DosignInvalidModeException"/>
+  <xs:complexType name="DosignInvalidModeException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="pushOtp">
+    <wsdl:part element="tns:pushOtp" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="certsResponse">
+    <wsdl:part element="tns:certsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdfsign">
+    <wsdl:part element="tns:pdfsign" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidModeException">
+    <wsdl:part element="tns:DosignInvalidModeException" name="DosignInvalidModeException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="digest">
+    <wsdl:part element="tns:digest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="providersResponse">
+    <wsdl:part element="tns:providersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addsign">
+    <wsdl:part element="tns:addsign" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testResources">
+    <wsdl:part element="tns:testResources" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="digestResponse">
+    <wsdl:part element="tns:digestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startTransaction">
+    <wsdl:part element="tns:startTransaction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTimeStampedData">
+    <wsdl:part element="tns:createTimeStampedData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidAuthenticationException">
+    <wsdl:part element="tns:DosignInvalidAuthenticationException" name="DosignInvalidAuthenticationException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sign">
+    <wsdl:part element="tns:sign" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="endTransaction">
+    <wsdl:part element="tns:endTransaction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="providers">
+    <wsdl:part element="tns:providers" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="signResponse">
+    <wsdl:part element="tns:signResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignException">
+    <wsdl:part element="tns:DosignException" name="DosignException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdfsignResponse">
+    <wsdl:part element="tns:pdfsignResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="endTransactionResponse">
+    <wsdl:part element="tns:endTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidDataException">
+    <wsdl:part element="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testResourcesResponse">
+    <wsdl:part element="tns:testResourcesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTimeStampedDataResponse">
+    <wsdl:part element="tns:createTimeStampedDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidPinException">
+    <wsdl:part element="tns:DosignInvalidPinException" name="DosignInvalidPinException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pushOtpResponse">
+    <wsdl:part element="tns:pushOtpResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="certs">
+    <wsdl:part element="tns:certs" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addsignResponse">
+    <wsdl:part element="tns:addsignResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startTransactionResponse">
+    <wsdl:part element="tns:startTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidOtpException">
+    <wsdl:part element="tns:DosignInvalidOtpException" name="DosignInvalidOtpException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DosignRemoteService">
+    <wsdl:operation name="addsign">
+      <wsdl:input message="tns:addsign" name="addsign">
+    </wsdl:input>
+      <wsdl:output message="tns:addsignResponse" name="addsignResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignInvalidOtpException" name="DosignInvalidOtpException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidPinException" name="DosignInvalidPinException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pushOtp">
+      <wsdl:input message="tns:pushOtp" name="pushOtp">
+    </wsdl:input>
+      <wsdl:output message="tns:pushOtpResponse" name="pushOtpResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidAuthenticationException" name="DosignInvalidAuthenticationException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testResources">
+      <wsdl:input message="tns:testResources" name="testResources">
+    </wsdl:input>
+      <wsdl:output message="tns:testResourcesResponse" name="testResourcesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startTransaction">
+      <wsdl:input message="tns:startTransaction" name="startTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:startTransactionResponse" name="startTransactionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignInvalidOtpException" name="DosignInvalidOtpException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidPinException" name="DosignInvalidPinException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTimeStampedData">
+      <wsdl:input message="tns:createTimeStampedData" name="createTimeStampedData">
+    </wsdl:input>
+      <wsdl:output message="tns:createTimeStampedDataResponse" name="createTimeStampedDataResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="endTransaction">
+      <wsdl:input message="tns:endTransaction" name="endTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:endTransactionResponse" name="endTransactionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignInvalidOtpException" name="DosignInvalidOtpException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidPinException" name="DosignInvalidPinException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pdfsign">
+      <wsdl:input message="tns:pdfsign" name="pdfsign">
+    </wsdl:input>
+      <wsdl:output message="tns:pdfsignResponse" name="pdfsignResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidOtpException" name="DosignInvalidOtpException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidPinException" name="DosignInvalidPinException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="providers">
+      <wsdl:input message="tns:providers" name="providers">
+    </wsdl:input>
+      <wsdl:output message="tns:providersResponse" name="providersResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="certs">
+      <wsdl:input message="tns:certs" name="certs">
+    </wsdl:input>
+      <wsdl:output message="tns:certsResponse" name="certsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="digest">
+      <wsdl:input message="tns:digest" name="digest">
+    </wsdl:input>
+      <wsdl:output message="tns:digestResponse" name="digestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sign">
+      <wsdl:input message="tns:sign" name="sign">
+    </wsdl:input>
+      <wsdl:output message="tns:signResponse" name="signResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidOtpException" name="DosignInvalidOtpException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidModeException" name="DosignInvalidModeException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidPinException" name="DosignInvalidPinException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DosignRemoteServiceSoapBinding" type="tns:DosignRemoteService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addsign">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addsign">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addsignResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignInvalidOtpException">
+        <soap:fault name="DosignInvalidOtpException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidPinException">
+        <soap:fault name="DosignInvalidPinException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pushOtp">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pushOtp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pushOtpResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidAuthenticationException">
+        <soap:fault name="DosignInvalidAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testResources">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="testResources">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="testResourcesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="startTransaction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="startTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignInvalidOtpException">
+        <soap:fault name="DosignInvalidOtpException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidPinException">
+        <soap:fault name="DosignInvalidPinException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTimeStampedData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createTimeStampedData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createTimeStampedDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="endTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="endTransaction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="endTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignInvalidOtpException">
+        <soap:fault name="DosignInvalidOtpException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidPinException">
+        <soap:fault name="DosignInvalidPinException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pdfsign">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pdfsign">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pdfsignResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidOtpException">
+        <soap:fault name="DosignInvalidOtpException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidPinException">
+        <soap:fault name="DosignInvalidPinException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="providers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="providers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="providersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="certs">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="certs">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="certsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="digest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="digest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="digestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sign">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sign">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="signResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidOtpException">
+        <soap:fault name="DosignInvalidOtpException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidModeException">
+        <soap:fault name="DosignInvalidModeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidPinException">
+        <soap:fault name="DosignInvalidPinException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DosignRemoteService">
+    <wsdl:port binding="tns:DosignRemoteServiceSoapBinding" name="DosignRemoteServiceBeanPort">
+      <soap:address location="http://applogic.reteunitaria.piemonte.it:80/dosignmanager/DosignRemoteService/DosignRemoteServiceBean"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

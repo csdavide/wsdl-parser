@@ -1,0 +1,645 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tokensignature.dosign.session.business.dosign.dosign.doqui.it/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="DosignTokenSignature" targetNamespace="http://tokensignature.dosign.session.business.dosign.dosign.doqui.it/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tokensignature.dosign.session.business.dosign.dosign.doqui.it/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tokensignature.dosign.session.business.dosign.dosign.doqui.it/">
+  <xs:element name="detachdataMerge" type="tns:detachdataMerge"/>
+  <xs:element name="detachdataMergeResponse" type="tns:detachdataMergeResponse"/>
+  <xs:element name="digest" type="tns:digest"/>
+  <xs:element name="digestDetach" type="tns:digestDetach"/>
+  <xs:element name="digestDetachResponse" type="tns:digestDetachResponse"/>
+  <xs:element name="digestResponse" type="tns:digestResponse"/>
+  <xs:element name="merge" type="tns:merge"/>
+  <xs:element name="mergeResponse" type="tns:mergeResponse"/>
+  <xs:element name="pdfDigest" type="tns:pdfDigest"/>
+  <xs:element name="pdfDigestResponse" type="tns:pdfDigestResponse"/>
+  <xs:element name="pdfMerge" type="tns:pdfMerge"/>
+  <xs:element name="pdfMergeResponse" type="tns:pdfMergeResponse"/>
+  <xs:element name="testResources" type="tns:testResources"/>
+  <xs:element name="testResourcesResponse" type="tns:testResourcesResponse"/>
+  <xs:complexType name="digest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:digestDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="digestDto">
+    <xs:complexContent>
+      <xs:extension base="tns:tokenBaseDto">
+        <xs:sequence>
+          <xs:element name="algorithm" type="xs:int"/>
+          <xs:element name="encoding" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tokenBaseDto">
+    <xs:complexContent>
+      <xs:extension base="tns:tokenDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="content" type="tns:contentDto"/>
+          <xs:element name="cached" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tokenDto">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="dosignDto">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="contentDto">
+    <xs:complexContent>
+      <xs:extension base="tns:commonDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="data" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="commonDto">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="digestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:contentDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pdfMerge">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:pdfMergeDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pdfMergeDto">
+    <xs:complexContent>
+      <xs:extension base="tns:mergeDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="pdfInput" type="tns:pdfInputDto"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="mergeDto">
+    <xs:complexContent>
+      <xs:extension base="tns:detachDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="envelope" type="tns:contentDto"/>
+          <xs:element minOccurs="0" name="digest" type="tns:contentDto"/>
+          <xs:element minOccurs="0" name="timestampEnvironment" type="tns:timestampEnvironmentDto"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="detachDto">
+    <xs:complexContent>
+      <xs:extension base="tns:detachDataDto">
+        <xs:sequence>
+          <xs:element name="encoding" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="detachDataDto">
+    <xs:complexContent>
+      <xs:extension base="tns:tokenBaseDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="pdfInputDto">
+    <xs:complexContent>
+      <xs:extension base="tns:tokenDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="contact" type="xs:string"/>
+          <xs:element minOccurs="0" name="digestDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="location" type="xs:string"/>
+          <xs:element minOccurs="0" name="reason" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timestampEnvironmentDto">
+    <xs:complexContent>
+      <xs:extension base="tns:commonDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="customerInformation" type="xs:string"/>
+          <xs:element minOccurs="0" name="customerTsa" type="xs:string"/>
+          <xs:element name="timestamped" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="pdfMergeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:contentDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="detachdataMerge">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:mergeDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="detachdataMergeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:contentDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pdfDigest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:pdfDigestDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pdfDigestDto">
+    <xs:complexContent>
+      <xs:extension base="tns:digestDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="pdfInput" type="tns:pdfInputDto"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="pdfDigestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:contentDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="testResources">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="testResourcesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="merge">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:mergeDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="mergeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:contentDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="digestDetach">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:digestDetachDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="digestDetachDto">
+    <xs:complexContent>
+      <xs:extension base="tns:digestDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="digestDetachResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:signedContentDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signedContentDto">
+    <xs:complexContent>
+      <xs:extension base="tns:tokenBaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="envelope" type="tns:contentDto"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DosignInvalidAlgorithmException" type="tns:DosignInvalidAlgorithmException"/>
+  <xs:complexType name="DosignInvalidAlgorithmException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidEncodingException" type="tns:DosignInvalidEncodingException"/>
+  <xs:complexType name="DosignInvalidEncodingException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvalidParameterException" type="tns:InvalidParameterException"/>
+  <xs:complexType name="InvalidParameterException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignException" type="tns:DosignException"/>
+  <xs:complexType name="DosignException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidDataException" type="tns:DosignInvalidDataException"/>
+  <xs:complexType name="DosignInvalidDataException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidEnvelopeException" type="tns:DosignInvalidEnvelopeException"/>
+  <xs:complexType name="DosignInvalidEnvelopeException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidPermissionException" type="tns:DosignInvalidPermissionException"/>
+  <xs:complexType name="DosignInvalidPermissionException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="mergeResponse">
+    <wsdl:part element="tns:mergeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="detachdataMergeResponse">
+    <wsdl:part element="tns:detachdataMergeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdfMerge">
+    <wsdl:part element="tns:pdfMerge" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="detachdataMerge">
+    <wsdl:part element="tns:detachdataMerge" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testResources">
+    <wsdl:part element="tns:testResources" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testResourcesResponse">
+    <wsdl:part element="tns:testResourcesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="digestResponse">
+    <wsdl:part element="tns:digestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidDataException">
+    <wsdl:part element="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidEncodingException">
+    <wsdl:part element="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdfMergeResponse">
+    <wsdl:part element="tns:pdfMergeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidEnvelopeException">
+    <wsdl:part element="tns:DosignInvalidEnvelopeException" name="DosignInvalidEnvelopeException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="digest">
+    <wsdl:part element="tns:digest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignException">
+    <wsdl:part element="tns:DosignException" name="DosignException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidAlgorithmException">
+    <wsdl:part element="tns:DosignInvalidAlgorithmException" name="DosignInvalidAlgorithmException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdfDigest">
+    <wsdl:part element="tns:pdfDigest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="merge">
+    <wsdl:part element="tns:merge" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidParameterException">
+    <wsdl:part element="tns:InvalidParameterException" name="InvalidParameterException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidPermissionException">
+    <wsdl:part element="tns:DosignInvalidPermissionException" name="DosignInvalidPermissionException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="digestDetach">
+    <wsdl:part element="tns:digestDetach" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdfDigestResponse">
+    <wsdl:part element="tns:pdfDigestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="digestDetachResponse">
+    <wsdl:part element="tns:digestDetachResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DosignTokenSignature">
+    <wsdl:operation name="digest">
+      <wsdl:input message="tns:digest" name="digest">
+    </wsdl:input>
+      <wsdl:output message="tns:digestResponse" name="digestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:InvalidParameterException" name="InvalidParameterException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidAlgorithmException" name="DosignInvalidAlgorithmException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pdfMerge">
+      <wsdl:input message="tns:pdfMerge" name="pdfMerge">
+    </wsdl:input>
+      <wsdl:output message="tns:pdfMergeResponse" name="pdfMergeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:InvalidParameterException" name="InvalidParameterException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEnvelopeException" name="DosignInvalidEnvelopeException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="detachdataMerge">
+      <wsdl:input message="tns:detachdataMerge" name="detachdataMerge">
+    </wsdl:input>
+      <wsdl:output message="tns:detachdataMergeResponse" name="detachdataMergeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:InvalidParameterException" name="InvalidParameterException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidAlgorithmException" name="DosignInvalidAlgorithmException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEnvelopeException" name="DosignInvalidEnvelopeException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pdfDigest">
+      <wsdl:input message="tns:pdfDigest" name="pdfDigest">
+    </wsdl:input>
+      <wsdl:output message="tns:pdfDigestResponse" name="pdfDigestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:InvalidParameterException" name="InvalidParameterException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidPermissionException" name="DosignInvalidPermissionException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidAlgorithmException" name="DosignInvalidAlgorithmException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testResources">
+      <wsdl:input message="tns:testResources" name="testResources">
+    </wsdl:input>
+      <wsdl:output message="tns:testResourcesResponse" name="testResourcesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="merge">
+      <wsdl:input message="tns:merge" name="merge">
+    </wsdl:input>
+      <wsdl:output message="tns:mergeResponse" name="mergeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:InvalidParameterException" name="InvalidParameterException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEnvelopeException" name="DosignInvalidEnvelopeException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="digestDetach">
+      <wsdl:input message="tns:digestDetach" name="digestDetach">
+    </wsdl:input>
+      <wsdl:output message="tns:digestDetachResponse" name="digestDetachResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:InvalidParameterException" name="InvalidParameterException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidAlgorithmException" name="DosignInvalidAlgorithmException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEnvelopeException" name="DosignInvalidEnvelopeException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DosignTokenSignatureSoapBinding" type="tns:DosignTokenSignature">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="digest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="digest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="digestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidAlgorithmException">
+        <soap:fault name="DosignInvalidAlgorithmException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEncodingException">
+        <soap:fault name="DosignInvalidEncodingException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pdfMerge">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pdfMerge">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pdfMergeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEnvelopeException">
+        <soap:fault name="DosignInvalidEnvelopeException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="detachdataMerge">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="detachdataMerge">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="detachdataMergeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidAlgorithmException">
+        <soap:fault name="DosignInvalidAlgorithmException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEnvelopeException">
+        <soap:fault name="DosignInvalidEnvelopeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEncodingException">
+        <soap:fault name="DosignInvalidEncodingException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pdfDigest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pdfDigest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pdfDigestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidPermissionException">
+        <soap:fault name="DosignInvalidPermissionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidAlgorithmException">
+        <soap:fault name="DosignInvalidAlgorithmException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEncodingException">
+        <soap:fault name="DosignInvalidEncodingException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testResources">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="testResources">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="testResourcesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="merge">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="merge">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="mergeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEnvelopeException">
+        <soap:fault name="DosignInvalidEnvelopeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEncodingException">
+        <soap:fault name="DosignInvalidEncodingException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="digestDetach">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="digestDetach">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="digestDetachResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidAlgorithmException">
+        <soap:fault name="DosignInvalidAlgorithmException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEnvelopeException">
+        <soap:fault name="DosignInvalidEnvelopeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEncodingException">
+        <soap:fault name="DosignInvalidEncodingException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DosignTokenSignature">
+    <wsdl:port binding="tns:DosignTokenSignatureSoapBinding" name="DosignTokenSignatureBeanPort">
+      <soap:address location="http://applogic.reteunitaria.piemonte.it:80/dosignmanager/DosignTokenSignature/DosignTokenSignatureBean"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,39 @@
+.container {
+	display: grid;
+	grid-template-areas:
+			"form1"
+			"target";
+	row-gap: 5px;
+}
+
+.form1 {
+  display: grid;
+	grid-template-areas:
+			"source copy";
+  justify-content: center;
+	column-gap: 5px;
+}
+
+.target {
+	display: grid;
+	grid-template-areas:
+			"e1 e2";
+  column-gap: 5px;
+}
+
+.data {
+    width: 700px;
+    height: 500px;
+}
+
+.e1 {
+    grid-area: e1;
+}
+
+.e2 {
+    grid-area: e2;
+}
+
+.selected {
+  border: 2px solid green;
+}

@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://timestamping.dosign.session.business.dosign.dosign.doqui.it/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="DosignTimestamping" targetNamespace="http://timestamping.dosign.session.business.dosign.dosign.doqui.it/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://timestamping.dosign.session.business.dosign.dosign.doqui.it/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://timestamping.dosign.session.business.dosign.dosign.doqui.it/">
+  <xs:element name="createTimeStampedData" type="tns:createTimeStampedData"/>
+  <xs:element name="createTimeStampedDataResponse" type="tns:createTimeStampedDataResponse"/>
+  <xs:element name="testResources" type="tns:testResources"/>
+  <xs:element name="testResourcesResponse" type="tns:testResourcesResponse"/>
+  <xs:complexType name="testResources">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="testResourcesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createTimeStampedData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:timestampingParameterDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="timestampingParameterDto">
+    <xs:complexContent>
+      <xs:extension base="tns:signatureParameterDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="customerInformation" type="xs:string"/>
+          <xs:element minOccurs="0" name="customerTsa" type="xs:string"/>
+          <xs:element minOccurs="0" name="fileName" type="xs:string"/>
+          <xs:element name="hashProtected" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="mediaType" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="signatureParameterDto">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDataDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+          <xs:element name="extractData" type="xs:boolean"/>
+          <xs:element name="profileType" type="xs:int"/>
+          <xs:element name="verificationScope" type="xs:int"/>
+          <xs:element name="verificationType" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="dosignDataDto">
+    <xs:complexContent>
+      <xs:extension base="tns:contentDto">
+        <xs:sequence>
+          <xs:element name="encoding" type="xs:int"/>
+          <xs:element name="hashAlgorithm" type="xs:int"/>
+          <xs:element minOccurs="0" name="signedDataMimeType" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="contentDto">
+    <xs:complexContent>
+      <xs:extension base="tns:commonDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="data" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="commonDto">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="dosignDto">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="createTimeStampedDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:timestampingValueDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="timestampingValueDto">
+    <xs:complexContent>
+      <xs:extension base="tns:commonDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="envelopeArray" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DosignException" type="tns:DosignException"/>
+  <xs:complexType name="DosignException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="DosignException">
+    <wsdl:part element="tns:DosignException" name="DosignException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testResources">
+    <wsdl:part element="tns:testResources" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTimeStampedData">
+    <wsdl:part element="tns:createTimeStampedData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testResourcesResponse">
+    <wsdl:part element="tns:testResourcesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTimeStampedDataResponse">
+    <wsdl:part element="tns:createTimeStampedDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DosignTimestamping">
+    <wsdl:operation name="testResources">
+      <wsdl:input message="tns:testResources" name="testResources">
+    </wsdl:input>
+      <wsdl:output message="tns:testResourcesResponse" name="testResourcesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTimeStampedData">
+      <wsdl:input message="tns:createTimeStampedData" name="createTimeStampedData">
+    </wsdl:input>
+      <wsdl:output message="tns:createTimeStampedDataResponse" name="createTimeStampedDataResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DosignTimestampingSoapBinding" type="tns:DosignTimestamping">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="testResources">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="testResources">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="testResourcesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTimeStampedData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createTimeStampedData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createTimeStampedDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DosignTimestamping">
+    <wsdl:port binding="tns:DosignTimestampingSoapBinding" name="DosignTimestampingBeanPort">
+      <soap:address location="http://applogic.reteunitaria.piemonte.it:80/dosignmanager/DosignTimestamping/DosignTimestampingBean"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

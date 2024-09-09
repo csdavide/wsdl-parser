@@ -1,0 +1,3548 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://server.mtom.ecmengine.index.doqui.it/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://mtom.ecmengine.index.doqui.it/" name="StreamingService" targetNamespace="http://server.mtom.ecmengine.index.doqui.it/">
+  <wsdl:import location="http://localhost:3001/wsdl/streamingWS.xml" namespace="http://mtom.ecmengine.index.doqui.it/">
+    </wsdl:import>
+  <wsdl:binding name="StreamingServiceSoapBinding" type="ns1:ServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addUserToGroup">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addUserToGroup">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addUserToGroupResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GroupEditException">
+        <soap:fault name="GroupEditException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchUserException">
+        <soap:fault name="NoSuchUserException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchGroupException">
+        <soap:fault name="NoSuchGroupException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSystemInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSystemInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateUserMetadata">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateUserMetadata">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateUserMetadataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchUserException">
+        <soap:fault name="NoSuchUserException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserUpdateException">
+        <soap:fault name="UserUpdateException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCustomModels">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllCustomModels">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllCustomModelsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getRendition">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getRendition">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRenditionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="restoreContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="restoreContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="restoreContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeSharedLink">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeSharedLink">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeSharedLinkResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UpdateException">
+        <soap:fault name="UpdateException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyDocumentVerifyParameter">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyDocumentVerifyParameter">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyDocumentVerifyParameterResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="xmlVerify">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="xmlVerify">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="xmlVerifyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSignatureTypeData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSignatureTypeData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSignatureTypeDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateContentData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateContentData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateContentDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UpdateException">
+        <soap:fault name="UpdateException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getJobError">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getJobError">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getJobErrorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAbsolutePath">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAbsolutePath">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAbsolutePathResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="massiveCreateContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="massiveCreateContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="massiveCreateContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFileReport">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFileReport">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFileReportResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="massiveRetrieveContentData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="massiveRetrieveContentData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="massiveRetrieveContentDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="extractDocumentFromEnvelope">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="extractDocumentFromEnvelope">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="extractDocumentFromEnvelopeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceJobInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getServiceJobInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getServiceJobInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateAcl">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateAcl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateAclResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AclEditException">
+        <soap:fault name="AclEditException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="revertVersion">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="revertVersion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="revertVersionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="downloadMethod">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="downloadMethod">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="downloadMethodResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SystemException">
+        <soap:fault name="SystemException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listAcl">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listAcl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listAclResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AclEditException">
+        <soap:fault name="AclEditException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAsyncReport">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAsyncReport">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAsyncReportResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="linkContentJob">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="linkContentJob">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="linkContentJobResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="massiveGetContentMetadata">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="massiveGetContentMetadata">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="massiveGetContentMetadataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DeleteException">
+        <soap:fault name="DeleteException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getRenditionTransformer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getRenditionTransformer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRenditionTransformerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="massiveUpdateMetadata">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="massiveUpdateMetadata">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="massiveUpdateMetadataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UpdateException">
+        <soap:fault name="UpdateException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPaths">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPaths">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPathsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAssociations">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAssociations">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAssociationsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="copyNode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="copyNode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="copyNodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CopyException">
+        <soap:fault name="CopyException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFileFormatInfoFileInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFileFormatInfoFileInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFileFormatInfoFileInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="massiveRemoveProperties">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="massiveRemoveProperties">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="massiveRemovePropertiesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAllVersions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllVersions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllVersionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createContentFromTemporaney">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createContentFromTemporaney">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createContentFromTemporaneyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAbsolutePathFromSharedLink">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAbsolutePathFromSharedLink">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAbsolutePathFromSharedLinkResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listDeletedNodesNoMetadata">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listDeletedNodesNoMetadata">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listDeletedNodesNoMetadataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSignaturesNumber">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSignaturesNumber">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSignaturesNumberResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sigilloSignatureExt">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sigilloSignatureExt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sigilloSignatureExtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getVersionMetadata">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getVersionMetadata">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVersionMetadataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateSharedLink">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateSharedLink">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateSharedLinkResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UpdateException">
+        <soap:fault name="UpdateException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="moveNode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="moveNode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="moveNodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkOutContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkOutContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkOutContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CheckInCheckOutException">
+        <soap:fault name="CheckInCheckOutException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTxnInfoFromUID">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTxnInfoFromUID">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTxnInfoFromUIDResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifySignedDocument">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifySignedDocument">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifySignedDocumentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="massiveDeleteContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="massiveDeleteContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="massiveDeleteContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DeleteException">
+        <soap:fault name="DeleteException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyDocumentNode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyDocumentNode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyDocumentNodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createGroup">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createGroup">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createGroupResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="GroupCreateException">
+        <soap:fault name="GroupCreateException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GroupAlreadyExistsException">
+        <soap:fault name="GroupAlreadyExistsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchGroupException">
+        <soap:fault name="NoSuchGroupException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="extractDocumentFromEnvelopeNode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="extractDocumentFromEnvelopeNode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="extractDocumentFromEnvelopeNodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTenantNames">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllTenantNames">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllTenantNamesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NoDataExtractedException">
+        <soap:fault name="NoDataExtractedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalResultsLucene">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTotalResultsLucene">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTotalResultsLuceneResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="resetAcl">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="resetAcl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="resetAclResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AclEditException">
+        <soap:fault name="AclEditException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="directUploadMethod">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="directUploadMethod">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="directUploadMethodResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SystemException">
+        <soap:fault name="SystemException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAsyncReportExt">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAsyncReportExt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAsyncReportExtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRenditionTransformer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteRenditionTransformer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteRenditionTransformerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DeleteException">
+        <soap:fault name="DeleteException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listAllUsers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listAllUsers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listAllUsersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NoDataExtractedException">
+        <soap:fault name="NoDataExtractedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listAllGroups">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listAllGroups">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listAllGroupsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NoDataExtractedException">
+        <soap:fault name="NoDataExtractedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTypePrefixedName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTypePrefixedName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTypePrefixedNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkingCopy">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getWorkingCopy">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getWorkingCopyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setRendition">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="setRendition">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setRenditionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addPublicKey">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addPublicKey">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addPublicKeyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="moveNodeJob">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="moveNodeJob">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="moveNodeJobResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createRichContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createRichContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createRichContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getContentMetadata">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getContentMetadata">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContentMetadataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTxnInfoFromDbid">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTxnInfoFromDbid">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTxnInfoFromDbidResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="purgeNode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="purgeNode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="purgeNodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DeleteException">
+        <soap:fault name="DeleteException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelCheckOutContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cancelCheckOutContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelCheckOutContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CheckInCheckOutException">
+        <soap:fault name="CheckInCheckOutException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listAllUserNames">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listAllUserNames">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listAllUserNamesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NoDataExtractedException">
+        <soap:fault name="NoDataExtractedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyDocumentNodeVerifyParameter">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyDocumentNodeVerifyParameter">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyDocumentNodeVerifyParameterResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="massiveRemoveAspects">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="massiveRemoveAspects">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="massiveRemoveAspectsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeUserFromGroup">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeUserFromGroup">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeUserFromGroupResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GroupEditException">
+        <soap:fault name="GroupEditException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchUserException">
+        <soap:fault name="NoSuchUserException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchGroupException">
+        <soap:fault name="NoSuchGroupException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyAsyncDocument">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyAsyncDocument">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyAsyncDocumentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyDocumentExt">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyDocumentExt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyDocumentExtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="shareDocument">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="shareDocument">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="shareDocumentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UpdateException">
+        <soap:fault name="UpdateException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserCreateException">
+        <soap:fault name="UserCreateException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyExistsException">
+        <soap:fault name="UserAlreadyExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="generateRenditionContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="generateRenditionContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="generateRenditionContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="callTimestamping">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="callTimestamping">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="callTimestampingResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="massiveDeleteNode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="massiveDeleteNode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="massiveDeleteNodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DeleteException">
+        <soap:fault name="DeleteException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="tenantExists">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="tenantExists">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="tenantExistsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTypeDefinition">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTypeDefinition">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTypeDefinitionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NoDataExtractedException">
+        <soap:fault name="NoDataExtractedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listUsers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listUsers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listUsersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NoDataExtractedException">
+        <soap:fault name="NoDataExtractedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="unLinkContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="unLinkContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="unLinkContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="generateRenditionRenditionDocument">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="generateRenditionRenditionDocument">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="generateRenditionRenditionDocumentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="TransformException">
+        <soap:fault name="TransformException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getRenditionTransformers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getRenditionTransformers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRenditionTransformersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="copyNodeCloneContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="copyNodeCloneContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="copyNodeCloneContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CopyException">
+        <soap:fault name="CopyException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveContentData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="retrieveContentData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="retrieveContentDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getVersion">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getVersion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVersionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteNode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteNode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteNodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DeleteException">
+        <soap:fault name="DeleteException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deployCustomModel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deployCustomModel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deployCustomModelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAllModelDescriptors">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllModelDescriptors">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllModelDescriptorsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveVersionContentData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="retrieveVersionContentData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="retrieveVersionContentDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteGroup">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteGroup">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteGroupResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GroupDeleteException">
+        <soap:fault name="GroupDeleteException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchGroupException">
+        <soap:fault name="NoSuchGroupException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="moveContentFromTemp">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="moveContentFromTemp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="moveContentFromTempResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="luceneSearchNoMetadata">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="luceneSearchNoMetadata">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="luceneSearchNoMetadataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="TooManyResultsException">
+        <soap:fault name="TooManyResultsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="massiveGetContentMetadataPartial">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="massiveGetContentMetadataPartial">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="massiveGetContentMetadataPartialResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setInheritsAcl">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="setInheritsAcl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setInheritsAclResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AclEditException">
+        <soap:fault name="AclEditException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="generateDigestFromUID">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="generateDigestFromUID">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="generateDigestFromUIDResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAsyncSigillo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAsyncSigillo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAsyncSigilloResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="copyContentBetweenTenant">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="copyContentBetweenTenant">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="copyContentBetweenTenantResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFileType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFileType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFileTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="luceneSearchRetro">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="luceneSearchRetro">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="luceneSearchRetroResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="TooManyResultsException">
+        <soap:fault name="TooManyResultsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSignatureType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSignatureType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSignatureTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSharingInfos">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSharingInfos">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSharingInfosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchUserException">
+        <soap:fault name="NoSuchUserException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserDeleteException">
+        <soap:fault name="UserDeleteException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="luceneSearch">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="luceneSearch">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="luceneSearchResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SystemException">
+        <soap:fault name="SystemException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addRenditionTransformer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addRenditionTransformer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addRenditionTransformerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAbsolutePathFromKeyPayload">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAbsolutePathFromKeyPayload">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAbsolutePathFromKeyPayloadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="generateRendition">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="generateRendition">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="generateRenditionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SystemException">
+        <soap:fault name="SystemException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFileInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFileInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFileInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="identifyDocument">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="identifyDocument">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="identifyDocumentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPublicKeys">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPublicKeys">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPublicKeysResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getRepositories">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getRepositories">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRepositoriesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="generateDigestFromContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="generateDigestFromContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="generateDigestFromContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="compareDigest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="compareDigest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="compareDigestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isInheritsAcl">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isInheritsAcl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isInheritsAclResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AclEditException">
+        <soap:fault name="AclEditException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateUserPassword">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateUserPassword">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateUserPasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchUserException">
+        <soap:fault name="NoSuchUserException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserUpdateException">
+        <soap:fault name="UserUpdateException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getModelDefinition">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getModelDefinition">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getModelDefinitionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NoDataExtractedException">
+        <soap:fault name="NoDataExtractedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="renameContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="renameContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="renameContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UpdateException">
+        <soap:fault name="UpdateException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="copyNodeCopyChildren">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="copyNodeCopyChildren">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="copyNodeCopyChildrenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CopyException">
+        <soap:fault name="CopyException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFileFormatInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFileFormatInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFileFormatInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="moveNodeAssociation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="moveNodeAssociation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="moveNodeAssociationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listDeletedNodes">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listDeletedNodes">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listDeletedNodesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="extractDocumentFromEnvelopeEnvelopedDocument">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="extractDocumentFromEnvelopeEnvelopedDocument">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="extractDocumentFromEnvelopeEnvelopedDocumentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyCertificate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyCertificate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyCertificateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="retainDocument">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="retainDocument">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="retainDocumentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UpdateException">
+        <soap:fault name="UpdateException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="undeployCustomModel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="undeployCustomModel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="undeployCustomModelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDbIdFromUID">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDbIdFromUID">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDbIdFromUIDResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReadException">
+        <soap:fault name="ReadException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addAcl">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addAcl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addAclResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AclEditException">
+        <soap:fault name="AclEditException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFileReportStream">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFileReportStream">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFileReportStreamResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verifyDocument">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyDocument">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyDocumentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getRenditions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getRenditions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRenditionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateMetadata">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateMetadata">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateMetadataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UpdateException">
+        <soap:fault name="UpdateException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="uploadMethod">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="uploadMethod">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="uploadMethodResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SystemException">
+        <soap:fault name="SystemException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="echo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="echo">
+        <soap:header message="ns1:echo" part="arg0" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="echoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMimetype">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMimetype">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMimetypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removePublicKey">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removePublicKey">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removePublicKeyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DeleteException">
+        <soap:fault name="DeleteException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeAcl">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeAcl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeAclResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AclEditException">
+        <soap:fault name="AclEditException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="linkContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="linkContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="linkContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InsertException">
+        <soap:fault name="InsertException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="purgeContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="purgeContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="purgeContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DeleteException">
+        <soap:fault name="DeleteException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTenants">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllTenants">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllTenantsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NoDataExtractedException">
+        <soap:fault name="NoDataExtractedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkInContent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkInContent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkInContentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CheckInCheckOutException">
+        <soap:fault name="CheckInCheckOutException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAssociationsAssocType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAssociationsAssocType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAssociationsAssocTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SearchException">
+        <soap:fault name="SearchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="changeAcl">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="changeAcl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="changeAclResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidParameterException">
+        <soap:fault name="InvalidParameterException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EcmEngineTransactionException">
+        <soap:fault name="EcmEngineTransactionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidCredentialsException">
+        <soap:fault name="InvalidCredentialsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoSuchNodeException">
+        <soap:fault name="NoSuchNodeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AclEditException">
+        <soap:fault name="AclEditException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testResources">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="testResources">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="testResourcesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="EcmEngineException">
+        <soap:fault name="EcmEngineException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StreamingService">
+    <wsdl:port binding="tns:StreamingServiceSoapBinding" name="ServiceImplPort">
+      <soap:address location="."/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

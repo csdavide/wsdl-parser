@@ -1,0 +1,768 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://remotesignature.dosign.session.business.dosign.dosign.doqui.it/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="DosignRemoteSignature" targetNamespace="http://remotesignature.dosign.session.business.dosign.dosign.doqui.it/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://remotesignature.dosign.session.business.dosign.dosign.doqui.it/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://remotesignature.dosign.session.business.dosign.dosign.doqui.it/">
+  <xs:element name="addsign" type="tns:addsign"/>
+  <xs:element name="addsignResponse" type="tns:addsignResponse"/>
+  <xs:element name="endTransaction" type="tns:endTransaction"/>
+  <xs:element name="endTransactionResponse" type="tns:endTransactionResponse"/>
+  <xs:element name="pdfsign" type="tns:pdfsign"/>
+  <xs:element name="pdfsignResponse" type="tns:pdfsignResponse"/>
+  <xs:element name="pushOtp" type="tns:pushOtp"/>
+  <xs:element name="pushOtpResponse" type="tns:pushOtpResponse"/>
+  <xs:element name="sign" type="tns:sign"/>
+  <xs:element name="signResponse" type="tns:signResponse"/>
+  <xs:element name="startTransaction" type="tns:startTransaction"/>
+  <xs:element name="startTransactionResponse" type="tns:startTransactionResponse"/>
+  <xs:element name="testResources" type="tns:testResources"/>
+  <xs:element name="testResourcesResponse" type="tns:testResourcesResponse"/>
+  <xs:complexType name="endTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:continueTransactionDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="continueTransactionDto">
+    <xs:complexContent>
+      <xs:extension base="tns:transactionDataDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="transactionDataDto">
+    <xs:complexContent>
+      <xs:extension base="tns:baseRemoteSignatureDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="authData" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="baseRemoteSignatureDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="alias" type="xs:string"/>
+          <xs:element minOccurs="0" name="customerInformation" type="xs:string"/>
+          <xs:element minOccurs="0" name="pin" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="remoteDto">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence>
+          <xs:element name="customerCa" type="xs:int"/>
+          <xs:element minOccurs="0" name="sendingType" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="dosignDto">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="endTransactionResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="pdfsign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:singleRemotePdfSignatureDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="singleRemotePdfSignatureDto">
+    <xs:complexContent>
+      <xs:extension base="tns:singleRemoteSignatureDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="contact" type="xs:string"/>
+          <xs:element minOccurs="0" name="graphicRemoteDataDto" type="tns:graphicRemoteDataDto"/>
+          <xs:element minOccurs="0" name="location" type="xs:string"/>
+          <xs:element minOccurs="0" name="reason" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="singleRemoteSignatureDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteSignatureDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="authData" type="xs:string"/>
+          <xs:element minOccurs="0" name="customerTsa" type="xs:string"/>
+          <xs:element minOccurs="0" name="data" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="envelope" type="xs:base64Binary"/>
+          <xs:element name="lastContent" type="xs:boolean"/>
+          <xs:element name="mode" type="xs:int"/>
+          <xs:element minOccurs="0" name="otp" type="xs:string"/>
+          <xs:element name="timestamped" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="remoteSignatureDto">
+    <xs:complexContent>
+      <xs:extension base="tns:baseRemoteSignatureDto">
+        <xs:sequence>
+          <xs:element name="encoding" type="xs:int"/>
+          <xs:element minOccurs="0" name="signingDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="graphicRemoteDataDto">
+    <xs:complexContent>
+      <xs:extension base="tns:remoteDto">
+        <xs:sequence>
+          <xs:element name="BScaleFont" type="xs:boolean"/>
+          <xs:element name="BShowDateTime" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="image" type="xs:base64Binary"/>
+          <xs:element name="imageOnly" type="xs:boolean"/>
+          <xs:element name="leftx" type="xs:int"/>
+          <xs:element name="lefty" type="xs:int"/>
+          <xs:element name="page" type="xs:int"/>
+          <xs:element name="resizeMode" type="xs:int"/>
+          <xs:element name="rightx" type="xs:int"/>
+          <xs:element name="righty" type="xs:int"/>
+          <xs:element minOccurs="0" name="testo" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="pdfsignResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:commonRemoteDataDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="commonRemoteDataDto">
+    <xs:complexContent>
+      <xs:extension base="tns:contentDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="authData" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="contentDto">
+    <xs:complexContent>
+      <xs:extension base="tns:commonDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="data" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="commonDto">
+    <xs:complexContent>
+      <xs:extension base="tns:dosignDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:singleRemoteSignatureDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:commonRemoteDataDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addsign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:singleRemoteSignatureDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addsignResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:commonRemoteDataDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pushOtp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:baseRemoteSignatureDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pushOtpResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="testResources">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="testResourcesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="startTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:startTransactionDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="startTransactionDto">
+    <xs:complexContent>
+      <xs:extension base="tns:baseRemoteSignatureDto">
+        <xs:sequence>
+          <xs:element name="maxTranSize" type="xs:int"/>
+          <xs:element minOccurs="0" name="otp" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="startTransactionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:commonRemoteDataDto"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidPinException" type="tns:DosignInvalidPinException"/>
+  <xs:complexType name="DosignInvalidPinException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignPinLockedException" type="tns:DosignPinLockedException"/>
+  <xs:complexType name="DosignPinLockedException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidSignerException" type="tns:DosignInvalidSignerException"/>
+  <xs:complexType name="DosignInvalidSignerException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidOtpException" type="tns:DosignInvalidOtpException"/>
+  <xs:complexType name="DosignInvalidOtpException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignException" type="tns:DosignException"/>
+  <xs:complexType name="DosignException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignClientHttpErrorException" type="tns:DosignClientHttpErrorException"/>
+  <xs:complexType name="DosignClientHttpErrorException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidEncodingException" type="tns:DosignInvalidEncodingException"/>
+  <xs:complexType name="DosignInvalidEncodingException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignCertificateChainNotFoundException" type="tns:DosignCertificateChainNotFoundException"/>
+  <xs:complexType name="DosignCertificateChainNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidDataException" type="tns:DosignInvalidDataException"/>
+  <xs:complexType name="DosignInvalidDataException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidModeException" type="tns:DosignInvalidModeException"/>
+  <xs:complexType name="DosignInvalidModeException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidEnvelopeException" type="tns:DosignInvalidEnvelopeException"/>
+  <xs:complexType name="DosignInvalidEnvelopeException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DosignInvalidAuthenticationException" type="tns:DosignInvalidAuthenticationException"/>
+  <xs:complexType name="DosignInvalidAuthenticationException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nestedExcMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="stackTraceMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="nestedExcClassName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="DosignInvalidPinException">
+    <wsdl:part element="tns:DosignInvalidPinException" name="DosignInvalidPinException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pushOtpResponse">
+    <wsdl:part element="tns:pushOtpResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addsignResponse">
+    <wsdl:part element="tns:addsignResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignCertificateChainNotFoundException">
+    <wsdl:part element="tns:DosignCertificateChainNotFoundException" name="DosignCertificateChainNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startTransactionResponse">
+    <wsdl:part element="tns:startTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidOtpException">
+    <wsdl:part element="tns:DosignInvalidOtpException" name="DosignInvalidOtpException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdfsignResponse">
+    <wsdl:part element="tns:pdfsignResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="endTransactionResponse">
+    <wsdl:part element="tns:endTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidDataException">
+    <wsdl:part element="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testResourcesResponse">
+    <wsdl:part element="tns:testResourcesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="endTransaction">
+    <wsdl:part element="tns:endTransaction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidEncodingException">
+    <wsdl:part element="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="signResponse">
+    <wsdl:part element="tns:signResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignPinLockedException">
+    <wsdl:part element="tns:DosignPinLockedException" name="DosignPinLockedException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidEnvelopeException">
+    <wsdl:part element="tns:DosignInvalidEnvelopeException" name="DosignInvalidEnvelopeException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignException">
+    <wsdl:part element="tns:DosignException" name="DosignException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidAuthenticationException">
+    <wsdl:part element="tns:DosignInvalidAuthenticationException" name="DosignInvalidAuthenticationException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidSignerException">
+    <wsdl:part element="tns:DosignInvalidSignerException" name="DosignInvalidSignerException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sign">
+    <wsdl:part element="tns:sign" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addsign">
+    <wsdl:part element="tns:addsign" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testResources">
+    <wsdl:part element="tns:testResources" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startTransaction">
+    <wsdl:part element="tns:startTransaction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pdfsign">
+    <wsdl:part element="tns:pdfsign" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignInvalidModeException">
+    <wsdl:part element="tns:DosignInvalidModeException" name="DosignInvalidModeException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pushOtp">
+    <wsdl:part element="tns:pushOtp" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DosignClientHttpErrorException">
+    <wsdl:part element="tns:DosignClientHttpErrorException" name="DosignClientHttpErrorException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DosignRemoteSignature">
+    <wsdl:operation name="endTransaction">
+      <wsdl:input message="tns:endTransaction" name="endTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:endTransactionResponse" name="endTransactionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignClientHttpErrorException" name="DosignClientHttpErrorException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidOtpException" name="DosignInvalidOtpException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignPinLockedException" name="DosignPinLockedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidSignerException" name="DosignInvalidSignerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidPinException" name="DosignInvalidPinException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pdfsign">
+      <wsdl:input message="tns:pdfsign" name="pdfsign">
+    </wsdl:input>
+      <wsdl:output message="tns:pdfsignResponse" name="pdfsignResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignClientHttpErrorException" name="DosignClientHttpErrorException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidOtpException" name="DosignInvalidOtpException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignCertificateChainNotFoundException" name="DosignCertificateChainNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidSignerException" name="DosignInvalidSignerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignPinLockedException" name="DosignPinLockedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidPinException" name="DosignInvalidPinException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sign">
+      <wsdl:input message="tns:sign" name="sign">
+    </wsdl:input>
+      <wsdl:output message="tns:signResponse" name="signResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignClientHttpErrorException" name="DosignClientHttpErrorException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidOtpException" name="DosignInvalidOtpException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignCertificateChainNotFoundException" name="DosignCertificateChainNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidSignerException" name="DosignInvalidSignerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignPinLockedException" name="DosignPinLockedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidModeException" name="DosignInvalidModeException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidPinException" name="DosignInvalidPinException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addsign">
+      <wsdl:input message="tns:addsign" name="addsign">
+    </wsdl:input>
+      <wsdl:output message="tns:addsignResponse" name="addsignResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignClientHttpErrorException" name="DosignClientHttpErrorException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidOtpException" name="DosignInvalidOtpException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEnvelopeException" name="DosignInvalidEnvelopeException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignCertificateChainNotFoundException" name="DosignCertificateChainNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignPinLockedException" name="DosignPinLockedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidSignerException" name="DosignInvalidSignerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidPinException" name="DosignInvalidPinException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidEncodingException" name="DosignInvalidEncodingException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pushOtp">
+      <wsdl:input message="tns:pushOtp" name="pushOtp">
+    </wsdl:input>
+      <wsdl:output message="tns:pushOtpResponse" name="pushOtpResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignInvalidDataException" name="DosignInvalidDataException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidAuthenticationException" name="DosignInvalidAuthenticationException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testResources">
+      <wsdl:input message="tns:testResources" name="testResources">
+    </wsdl:input>
+      <wsdl:output message="tns:testResourcesResponse" name="testResourcesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startTransaction">
+      <wsdl:input message="tns:startTransaction" name="startTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:startTransactionResponse" name="startTransactionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:DosignClientHttpErrorException" name="DosignClientHttpErrorException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidOtpException" name="DosignInvalidOtpException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignException" name="DosignException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignCertificateChainNotFoundException" name="DosignCertificateChainNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidSignerException" name="DosignInvalidSignerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignPinLockedException" name="DosignPinLockedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DosignInvalidPinException" name="DosignInvalidPinException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DosignRemoteSignatureSoapBinding" type="tns:DosignRemoteSignature">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="endTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="endTransaction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="endTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignClientHttpErrorException">
+        <soap:fault name="DosignClientHttpErrorException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidOtpException">
+        <soap:fault name="DosignInvalidOtpException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignPinLockedException">
+        <soap:fault name="DosignPinLockedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidSignerException">
+        <soap:fault name="DosignInvalidSignerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidPinException">
+        <soap:fault name="DosignInvalidPinException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pdfsign">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pdfsign">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pdfsignResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignClientHttpErrorException">
+        <soap:fault name="DosignClientHttpErrorException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidOtpException">
+        <soap:fault name="DosignInvalidOtpException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignCertificateChainNotFoundException">
+        <soap:fault name="DosignCertificateChainNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidSignerException">
+        <soap:fault name="DosignInvalidSignerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignPinLockedException">
+        <soap:fault name="DosignPinLockedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidPinException">
+        <soap:fault name="DosignInvalidPinException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEncodingException">
+        <soap:fault name="DosignInvalidEncodingException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sign">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sign">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="signResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignClientHttpErrorException">
+        <soap:fault name="DosignClientHttpErrorException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidOtpException">
+        <soap:fault name="DosignInvalidOtpException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignCertificateChainNotFoundException">
+        <soap:fault name="DosignCertificateChainNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidSignerException">
+        <soap:fault name="DosignInvalidSignerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignPinLockedException">
+        <soap:fault name="DosignPinLockedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidModeException">
+        <soap:fault name="DosignInvalidModeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidPinException">
+        <soap:fault name="DosignInvalidPinException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEncodingException">
+        <soap:fault name="DosignInvalidEncodingException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addsign">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addsign">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addsignResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignClientHttpErrorException">
+        <soap:fault name="DosignClientHttpErrorException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidOtpException">
+        <soap:fault name="DosignInvalidOtpException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEnvelopeException">
+        <soap:fault name="DosignInvalidEnvelopeException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignCertificateChainNotFoundException">
+        <soap:fault name="DosignCertificateChainNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignPinLockedException">
+        <soap:fault name="DosignPinLockedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidSignerException">
+        <soap:fault name="DosignInvalidSignerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidPinException">
+        <soap:fault name="DosignInvalidPinException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidEncodingException">
+        <soap:fault name="DosignInvalidEncodingException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pushOtp">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pushOtp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pushOtpResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignInvalidDataException">
+        <soap:fault name="DosignInvalidDataException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidAuthenticationException">
+        <soap:fault name="DosignInvalidAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testResources">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="testResources">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="testResourcesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="startTransaction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="startTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DosignClientHttpErrorException">
+        <soap:fault name="DosignClientHttpErrorException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidOtpException">
+        <soap:fault name="DosignInvalidOtpException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignException">
+        <soap:fault name="DosignException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignCertificateChainNotFoundException">
+        <soap:fault name="DosignCertificateChainNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidSignerException">
+        <soap:fault name="DosignInvalidSignerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignPinLockedException">
+        <soap:fault name="DosignPinLockedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DosignInvalidPinException">
+        <soap:fault name="DosignInvalidPinException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DosignRemoteSignature">
+    <wsdl:port binding="tns:DosignRemoteSignatureSoapBinding" name="DosignRemoteSignatureBeanPort">
+      <soap:address location="http://applogic.reteunitaria.piemonte.it:80/dosignmanager/DosignRemoteSignature/DosignRemoteSignatureBean"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
