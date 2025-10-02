@@ -92,6 +92,19 @@ async function changeService() {
   }
 }
 
+function changeBinding() {	
+	 let operationsEl = document.getElementById('operations');
+   operationsEl.innerHTML = '';
+	 let sourceDiv = document.getElementById('source');
+	 let formData = new FormData(sourceDiv);
+	 let service = formData.get('service');
+	 let binding = formData.get('binding');
+	 fetchData(serviceUri + '/operations/' + service + '/' + binding).then(data => {
+		operationsEl.innerHTML = data;
+		changeOperation();
+	 });
+}
+
 async function changeOperation() {
   try {
     const targetEl = document.getElementById('target');
