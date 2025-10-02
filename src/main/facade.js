@@ -1,4 +1,4 @@
-const parser = require('../core');
+const parser = require('./core');
 
 class facade {
 
