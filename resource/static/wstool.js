@@ -7,7 +7,7 @@ async function fetchData(url) {
   
   async function attemptFetch(retryCount = 0) {
     try {
-			const serviceUrl = url.replace(/^"+|"+$/g, '');
+			const serviceUrl = serviceUrl.replace(/\\/g, '').replace(/^["']+|["']+$/g, '').trim();
       const response = await fetch(serviceUrl);
       
       if (!response.ok) {
