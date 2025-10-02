@@ -138,10 +138,17 @@ async function changeOperation() {
 }
 
 function showLoading(isLoading) {
-  const loadingEl = document.createElement('div');
-  loadingEl.className = isLoading ? 'loading' : 'hidden';
+  const loadingEl = document.getElementById('loading');
+	if (loadingEl === 'undefined') {
+		loadingEl = document.createElement('div');
+		document.body.appendChild(loadingEl);
+	} 
+	changeLoading(loadingEl, isLoading);
+}
+
+function changeLoading(loadingEl, isLoading) {
+	loadingEl.className = isLoading ? 'loading' : 'hidden';
   loadingEl.textContent = isLoading ? 'Caricamento...' : '';
-  document.body.appendChild(loadingEl);
 }
 
 function showError(message) {
