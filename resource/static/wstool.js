@@ -130,11 +130,23 @@ async function changeOperation() {
 		const requestDiv = document.createElement('div');
 		requestDiv.className = 'language-xml';
 		requestDiv.innerHTML = json.request;
+		requestDiv.style.overflow = 'auto';
+		requestDiv.style.maxHeight = '300px';
+		requestDiv.style.maxWidth = '500px';
+		requestDiv.style.border = '1px solid #ccc';
+		requestDiv.style.padding = '10px';
+		requestDiv.style.whiteSpace = 'nowrap';
 
 		// response
 		const responseDiv = document.createElement('div');
 		responseDiv.className = 'language-xml';
 		responseDiv.innerHTML = json.response;
+		responseDiv.style.overflow = 'auto';
+		responseDiv.style.maxHeight = '300px';
+		responseDiv.style.maxWidth = '500px';
+		responseDiv.style.border = '1px solid #ccc';
+		responseDiv.style.padding = '10px';
+		responseDiv.style.whiteSpace = 'nowrap';
 		
 		// dom
 		const requestCode = document.createElement('code');
