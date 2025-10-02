@@ -137,13 +137,19 @@ async function changeOperation() {
 		responseDiv.innerHTML = json.response;
 		
 		// dom
-		const requestPre = document.createElement('div');
 		const requestCode = document.createElement('code');
-		targetEl.appendChild(requestPre.appendChild(requestCode).appendChild(requestDiv));		
-		
-		const responsePre = document.createElement('div');
+		requestCode.appendChild(requestDiv);
+
+		const requestPre = document.createElement('pre');
+		requestPre.appendChild(requestCode);
+		targetEl.appendChild(requestPre);
+
 		const responseCode = document.createElement('code');
-		targetEl.appendChild(responsePre.appendChild(responseCode).appendChild(responseDiv));		
+		responseCode.appendChild(responseDiv);
+
+		const responsePre = document.createElement('pre');
+		responsePre.appendChild(responseCode);
+		targetEl.appendChild(responsePre);
     
     document.querySelectorAll('.language-xml').forEach(el => {
       hljs.highlightElement(el);
