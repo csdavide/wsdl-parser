@@ -124,16 +124,17 @@ async function changeOperation() {
     const operation = formData.get('operation');
     
     const data = await fetchData(serviceUri + '/info/' + service + '/' + binding + '/' + operation);
+		const json = JSON.parse(data);
 		
 		// request
 		const requestDiv = document.createElement('div');		
 		requestDiv.className = 'language-xml';
-		requestDiv.innerHTML = data.request;		
+		requestDiv.innerHTML = json.request;		
 
 		// response
 		const responseDiv = document.createElement('div');		
 		responseDiv.className = 'language-xml';
-		responseDiv.innerHTML = data.response;
+		responseDiv.innerHTML = json.response;
 		
 		// show
 		targetEl.appendChild(requestDiv);
