@@ -1,7 +1,7 @@
 const java = require('java');
 const path = require('path');
 
-const resourceDir = path.resolve(__dirname, '../resource/lib');
+const resourceDir = path.resolve(__dirname, '../../resource/lib');
 java.classpath.push(path.join (resourceDir, '/commons-io-2.4.jar'));
 java.classpath.push(path.join (resourceDir, '/commons-lang3-3.3.2.jar'));
 java.classpath.push(path.join (resourceDir, '/guava-18.0.jar'));
@@ -18,7 +18,7 @@ java.classpath.push(path.join (resourceDir, '/xmlbeans-2.3.0.jar'));
 java.classpath.push(path.join (resourceDir, '/wsdlparse.jar'));
 
 parser = function (url){
-  this.jack_parser = java.newInstanceSync('com.jack.Parser',url);
+  this.jack_parser = java.newInstanceSync('com.jack.Parser', url);
 	this.wsdl_parser = java.callStaticMethodSync('org.reficio.ws.builder.core.Wsdl', 'parse', url);
 
   this.bindings = function(){
