@@ -139,8 +139,9 @@ async function changeOperation() {
 
 function showLoading(isLoading) {
   const loadingEl = document.getElementById('loading');
-	if (loadingEl === 'undefined') {
+	if (loadingEl === null) {
 		loadingEl = document.createElement('div');
+		loadingEl.id = 'loading';
 		document.body.appendChild(loadingEl);
 	} 
 	changeLoading(loadingEl, isLoading);
