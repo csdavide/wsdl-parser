@@ -128,12 +128,12 @@ async function changeOperation() {
 		// request
 		const requestDiv = document.createElement('div');		
 		requestDiv.className = 'language-xml';
-		requestDiv.innerHTML = data["request"];		
+		requestDiv.innerHTML = data.request;		
 
 		// response
 		const responseDiv = document.createElement('div');		
 		responseDiv.className = 'language-xml';
-		responseDiv.innerHTML = data["response"];
+		responseDiv.innerHTML = data.response;
 		
 		// show
 		targetEl.appendChild(requestDiv);
