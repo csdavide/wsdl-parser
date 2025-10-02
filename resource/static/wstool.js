@@ -126,16 +126,14 @@ async function changeOperation() {
     const data = await fetchData(serviceUri + '/info/' + service + '/' + binding + '/' + operation);
 		
 		// request
-		const request = data["request"];
 		const requestDiv = document.createElement('div');		
 		requestDiv.className = 'language-xml';
-		requestDiv.innerHTML = data;		
+		requestDiv.innerHTML = data["request"];		
 
 		// response
-		const response = data["response"]
 		const responseDiv = document.createElement('div');		
 		responseDiv.className = 'language-xml';
-		responseDiv.innerHTML = data;		
+		responseDiv.innerHTML = data["response"];
 		
 		// show
 		targetEl.appendChild(requestDiv);
