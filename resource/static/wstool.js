@@ -83,7 +83,7 @@ async function changeService() {
     
     const optsCount = bindingsEl.options.length;
     if (optsCount === 1) {
-      changeBinding();
+      await changeBinding();
     }
     
     showLoading(false);
@@ -93,7 +93,7 @@ async function changeService() {
   }
 }
 
-function changeBinding() {	
+async function changeBinding() {	
 	 let operationsEl = document.getElementById('operations');
    operationsEl.innerHTML = '';
 	 let sourceDiv = document.getElementById('source');
