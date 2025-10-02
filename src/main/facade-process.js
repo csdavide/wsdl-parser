@@ -40,9 +40,8 @@ class FacadeProcess {
     }
 
     initService(id, { serviceIndex, serviceDescr }) {
-        try {
-						const cleanServiceDescr = serviceDescr.replace(/^"+|"+$/g, '');
-            const service = new Facade(cleanServiceDescr);
+        try {					
+            const service = new Facade(serviceDescr);
             this.services.set(serviceIndex, service);
             
             parentPort.postMessage({ 
