@@ -125,7 +125,7 @@ async function changeOperation() {
     
     const data = await fetchData(serviceUri + '/info/' + service + '/' + binding + '/' + operation);
     targetEl.innerHTML = data;		
-		targetEl.className = '.language-xml';
+		targetEl.className = 'language-xml';
     
     document.querySelectorAll('.language-xml').forEach(el => {
       hljs.highlightElement(el);
