@@ -1,11 +1,10 @@
 {
-	"name": "wsdl_tool",
+	"name": "wsdl_parser",
 	"version": "1.0.0",
 	"description": "",
 	"main": "src/main.js",
 	"scripts": {
-		"start": "electron .",
-		"build": "electron-builder"
+		"start": "node app.js",
 	},
 	"dependencies": {
 		"axios": "^1.7.2",
@@ -17,8 +16,5 @@
 		"node-gyp": "^10.2.0",
 		"node-java": "^1.0.1",
 		"soap": "^1.1.0"
-	},
-	"devDependencies": {
-		"electron": "^31.4.0"
 	}
 }
