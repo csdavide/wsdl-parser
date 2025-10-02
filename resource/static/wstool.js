@@ -135,7 +135,6 @@ async function changeOperation() {
 		requestDiv.style.maxWidth = '700px';
 		requestDiv.style.border = '1px solid #ccc';
 		requestDiv.style.padding = '10px';
-		requestDiv.style.whiteSpace = 'nowrap';
 
 		// response
 		const responseDiv = document.createElement('div');
@@ -146,7 +145,6 @@ async function changeOperation() {
 		responseDiv.style.maxWidth = '700px';
 		responseDiv.style.border = '1px solid #ccc';
 		responseDiv.style.padding = '10px';
-		responseDiv.style.whiteSpace = 'nowrap';
 		
 		// dom
 		const requestCode = document.createElement('code');
